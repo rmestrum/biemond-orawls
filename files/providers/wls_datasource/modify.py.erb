@@ -27,6 +27,8 @@ rowprefetchenabled                      = '<%= rowprefetchenabled %>'
 rowprefetchsize                         = '<%= rowprefetchsize %>'
 initsql                                 = "<%= (initsql||'').gsub('"','\"') %>"
 shrinkfrequencyseconds                  = '<%= shrinkfrequencyseconds %>'
+inactiveconnectiontimeoutseconds        = '<%= inactiveconnectiontimeoutseconds %>'
+connectionreservetimeoutseconds         = '<%= connectionreservetimeoutseconds %>'
 
 edit()
 startEdit()
@@ -69,6 +71,12 @@ try:
 
     if testfrequency:
       set('TestFrequencySeconds', int(testfrequency))
+
+    if inactiveconnectiontimeoutseconds:
+      set('InactiveConnectionTimeoutSeconds', int(inactiveconnectiontimeoutseconds))
+
+    if connectionreservetimeoutseconds:
+      set('ConnectionReserveTimeoutSeconds', int(connectionreservetimeoutseconds))
 
     if connectioncreationretryfrequency:
       set('ConnectionCreationRetryFrequencySeconds', int(connectioncreationretryfrequency))

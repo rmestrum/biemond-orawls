@@ -66,6 +66,8 @@ module Puppet
     property :rowprefetchsize
     property :initsql
     property :shrinkfrequencyseconds
+    property :inactiveconnectiontimeoutseconds
+    property :connectionreservetimeoutseconds
 
     add_title_attributes(:datasource_name) do
       /^((.*\/)?(.*)?)$/
