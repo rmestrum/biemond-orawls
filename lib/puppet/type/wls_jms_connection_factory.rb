@@ -55,6 +55,7 @@ module Puppet
     property :attachjmsxuserid
     property :defaultdeliverymode
     property :defaultredeliverydelay
+    property :defaultcompressionthreshold
 
     add_title_attributes(:jmsmodule, :connection_factory_name) do
       /^((.*\/)?(.*):(.*)?)$/

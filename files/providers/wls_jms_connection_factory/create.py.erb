@@ -3,23 +3,24 @@ real_domain='<%= domain %>'
 
 
 
-name                       = '<%= connection_factory_name %>'
-jmsmodule                  = '<%= jmsmodule %>'
-jndiname                   = '<%= jndiname %>'
-localjndiname              = '<%= localjndiname %>'
-subdeployment              = '<%= subdeployment %>'
-defaulttargeting           = '<%= defaulttargeting %>'
-xaenabled                  = '<%= xaenabled %>'
-transactiontimeout         = '<%= transactiontimeout %>'
-clientidpolicy             = '<%= clientidpolicy %>'
-subscriptionsharingpolicy  = '<%= subscriptionsharingpolicy %>'
-messagesmaximum            = '<%= messagesmaximum %>'
-reconnectpolicy            = '<%= reconnectpolicy %>'
-loadbalancingenabled       = '<%= loadbalancingenabled %>'
-serveraffinityenabled      = '<%= serveraffinityenabled %>'
-attachjmsxuserid           = '<%= attachjmsxuserid %>'
-defaultdeliverymode        = '<%= defaultdeliverymode %>'
-defaultredeliverydelay     = '<%= defaultredeliverydelay %>'
+name                        = '<%= connection_factory_name %>'
+jmsmodule                   = '<%= jmsmodule %>'
+jndiname                    = '<%= jndiname %>'
+localjndiname               = '<%= localjndiname %>'
+subdeployment               = '<%= subdeployment %>'
+defaulttargeting            = '<%= defaulttargeting %>'
+xaenabled                   = '<%= xaenabled %>'
+transactiontimeout          = '<%= transactiontimeout %>'
+clientidpolicy              = '<%= clientidpolicy %>'
+subscriptionsharingpolicy   = '<%= subscriptionsharingpolicy %>'
+messagesmaximum             = '<%= messagesmaximum %>'
+reconnectpolicy             = '<%= reconnectpolicy %>'
+loadbalancingenabled        = '<%= loadbalancingenabled %>'
+serveraffinityenabled       = '<%= serveraffinityenabled %>'
+attachjmsxuserid            = '<%= attachjmsxuserid %>'
+defaultdeliverymode         = '<%= defaultdeliverymode %>'
+defaultredeliverydelay      = '<%= defaultredeliverydelay %>'
+defaultcompressionthreshold = '<%= defaultcompressionthreshold %>'
 
 def formatBoolean(value):
   if value == '1':
@@ -83,6 +84,9 @@ try:
       cmo.setDefaultDeliveryMode(defaultdeliverymode)
     if defaultredeliverydelay:
       cmo.setDefaultRedeliveryDelay( int(defaultredeliverydelay) )
+
+    if defaultcompressionthreshold: 
+      cmo.setDefaultCompressionThreshold( int(defaultcompressionthreshold) )
 
     save()
     activate()

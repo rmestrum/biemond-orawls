@@ -9,7 +9,7 @@ def quote(text):
 m = ls('/JMSSystemResources',returnMap='true')
 
 f = open("/tmp/wlstScript.out", "w")
-print >>f, "name;jmsmodule;jndiname;localjndiname;subdeployment;defaulttargeting;xaenabled;transactiontimeout;domain;clientidpolicy;subscriptionsharingpolicy;messagesmaximum;reconnectpolicy;loadbalancingenabled;serveraffinityenabled;attachjmsxuserid;defaultdeliverymode;defaultredeliverydelay"
+print >>f, "name;jmsmodule;jndiname;localjndiname;subdeployment;defaulttargeting;xaenabled;transactiontimeout;domain;clientidpolicy;subscriptionsharingpolicy;messagesmaximum;reconnectpolicy;loadbalancingenabled;serveraffinityenabled;attachjmsxuserid;defaultdeliverymode;defaultredeliverydelay;defaultcompressionthreshold"
 for token in m:
   n = ls('/JMSSystemResources/'+token+'/JMSResource/'+token+'/ConnectionFactories',returnMap='true')
   for token2 in n:
@@ -43,8 +43,9 @@ for token in m:
          cd('/JMSSystemResources/'+token+'/JMSResource/'+token+'/ConnectionFactories/'+token2+'/DefaultDeliveryParams/'+token2)
          defaultDeliveryMode = get('DefaultDeliveryMode')
          defaultRedeliveryDelay = get('DefaultRedeliveryDelay')
+         defaultCompressionThreshold = get('DefaultCompressionThreshold')
 
-         print >>f, ";".join(map(quote, [domain+'/'+token+":"+token2,token,jndiname,localjndiname,subdeployment,defaultTargeting,xaEnabled,transactionTimeout,domain,clientIdPolicy,subscriptionSharingPolicy,messagesMaximum,reconnectPolicy,loadBalancingEnabled,serverAffinityEnabled,attachJmsXUserId,defaultDeliveryMode,defaultRedeliveryDelay]))
+         print >>f, ";".join(map(quote, [domain+'/'+token+":"+token2,token,jndiname,localjndiname,subdeployment,defaultTargeting,xaEnabled,transactionTimeout,domain,clientIdPolicy,subscriptionSharingPolicy,messagesMaximum,reconnectPolicy,loadBalancingEnabled,serverAffinityEnabled,attachJmsXUserId,defaultDeliveryMode,defaultRedeliveryDelay,defaultCompressionThreshold]))
 
 f.close()
 print "~~~~COMMAND SUCCESFULL~~~~"
